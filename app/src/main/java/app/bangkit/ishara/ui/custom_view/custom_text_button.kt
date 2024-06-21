@@ -9,15 +9,17 @@ import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import app.bangkit.ishara.R
 
-class CustomImageButton : View {
+class CustomTextButton : View {
 
     private val backgroundPaint = Paint()
-    var options: ArrayList<ImgButton> = arrayListOf()
+    private val mBounds = Rect()
+    private val pilganButtonPaint = Paint(Paint.FAKE_BOLD_TEXT_FLAG)
+    var options: ArrayList<TxtButton> = arrayListOf()
         set(value) {
             field = value
             requestLayout()
         }
-    var imgButton: ImgButton? = null
+    var txtButton: TxtButton? = null
 
     private val cornerRadius = 30f  // Radius untuk rounded corner
 
@@ -39,7 +41,7 @@ class CustomImageButton : View {
         var value = -450F
 
         for (i in options.indices) {
-            if (i.mod(2) == 0) {
+            if (i % 2 == 0) {
                 options[i].apply {
                     x = halfOfWidth - 300F
                     y = halfOfHeight + value
@@ -62,16 +64,18 @@ class CustomImageButton : View {
         }
     }
 
-    private fun drawButton(canvas: Canvas?, imgButton: ImgButton) {
-        if (imgButton.isClicked) {
+    private fun drawButton(canvas: Canvas?, txtButton: TxtButton) {
+        if (txtButton.isClicked) {
             backgroundPaint.color = ResourcesCompat.getColor(resources, R.color.darkBlue, null)
+            pilganButtonPaint.color = ResourcesCompat.getColor(resources, R.color.white, null)
         } else {
             backgroundPaint.color = ResourcesCompat.getColor(resources, R.color.lightOrange, null)
+            pilganButtonPaint.color = ResourcesCompat.getColor(resources, R.color.orange, null)
         }
 
         canvas?.save()
 
-        canvas?.translate(imgButton.x as Float, imgButton.y as Float)
+        canvas?.translate(txtButton.x as Float, txtButton.y as Float)
         val backgroundPath = Path()
         backgroundPath.addRoundRect(
             0F, 0F, 245F, 240F,
@@ -80,39 +84,27 @@ class CustomImageButton : View {
         )
         canvas?.drawPath(backgroundPath, backgroundPaint)
 
-        val drawableId = resources.getIdentifier(imgButton.image_path, "drawable", context.packageName)
-        val bitmap = BitmapFactory.decodeResource(resources, drawableId)
-        bitmap?.let {
-            val scaledBitmap = Bitmap.createScaledBitmap(it, 200, 200, false)
-            val rect = RectF(25f, 25f, 225f, 225f)
-            canvas?.drawRoundRect(rect, cornerRadius, cornerRadius, backgroundPaint)
-            canvas?.drawBitmap(scaledBitmap, 25f, 25f, null)
-        }
+        pilganButtonPaint.textSize = 100F
+        val text = txtButton.name
+        pilganButtonPaint.getTextBounds(text, 0, text.length, mBounds)
+        val textWidth = mBounds.width()
+        val textHeight = mBounds.height()
+        val xPos = (245F / 2) - (textWidth / 2)
+        val yPos = (240F / 2) + (textHeight / 2)
+        canvas?.drawText(text, xPos, yPos, pilganButtonPaint)
 
         canvas?.restore()
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        val halfOfHeight = height / 2
-        val halfOfWidth = width / 2
-
-        val widthColumnOne = (halfOfWidth - 300F)..(halfOfWidth - 100F)
-        val widthColumnTwo = (halfOfWidth + 100F)..(halfOfWidth + 300F)
-
-        val heightRowOne = (halfOfHeight - 600F)..(halfOfHeight - 400F)
-        val heightRowTwo = (halfOfHeight - 300F)..(halfOfHeight - 100F)
-
         if (event?.action == MotionEvent.ACTION_DOWN) {
-            // Memeriksa apakah event terjadi di salah satu kotak
             for (i in options.indices) {
-                val imgButton = options[i]
-                when {
-                    event.x >= imgButton.x!! && event.x <= imgButton.x!! + 200F &&
-                            event.y >= imgButton.y!! && event.y <= imgButton.y!! + 225F -> {
-                        options(i)
-                        return true
-                    }
+                val txtButton = options[i]
+                if (event.x >= txtButton.x!! && event.x <= txtButton.x!! + 245F &&
+                    event.y >= txtButton.y!! && event.y <= txtButton.y!! + 240F) {
+                    options(i)
+                    return true
                 }
             }
         }
@@ -120,22 +112,21 @@ class CustomImageButton : View {
     }
 
     private fun options(position: Int) {
-        for (imgButton in options) {
-            imgButton.isClicked = false
+        for (txtButton in options) {
+            txtButton.isClicked = false
         }
         options[position].apply {
-            imgButton = this
+            txtButton = this
             isClicked = true
         }
         invalidate()
     }
 }
 
-data class ImgButton(
+data class TxtButton(
     val id: Int,
     var x: Float? = 0f,
     var y: Float? = 0f,
-    var image_path: String,
     var name: String,
     var isClicked: Boolean,
 )

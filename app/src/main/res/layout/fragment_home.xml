@@ -58,7 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
-                        android:text="Abjad 1"
+                        android:text="@string/app_name"
                         android:textColor="@color/white"
                         android:fontFamily="@font/sora_bold" />
 
@@ -67,24 +67,42 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:text="Belajar isyarat untuk\nabjad a,b,c,d,e"
+                        android:text="Belajar isyarat BISINDO"
                         android:textColor="@color/white"
                         android:fontFamily="@font/sora_regular" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_continue_learning"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_marginTop="56dp"
                         android:textAlignment="textStart"
                         app:backgroundTint="@color/orange"
                         android:textSize="12sp"
-                        android:text="Lanjutkan Belajar"
+                        android:text="Belajar Sekarang"
                         android:fontFamily="@font/sora_bold"
                         android:drawableEnd="@drawable/ic_arrow_right_baseline24" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Isyarat Terbaru"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_today_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:orientation="horizontal" />
+        
     </LinearLayout>
 
 </ScrollView>

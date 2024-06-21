@@ -18,7 +18,7 @@
             android:fontFamily="@font/sora_bold"
             android:text="Apa Makna Sign Language Ini ?"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@id/sequence"
+            app:layout_constraintBottom_toTopOf="@id/sequence"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,10 +26,39 @@
         <LinearLayout
             android:id="@+id/sequence"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            app:layout_constraintBottom_toTopOf="@id/et_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"/>
 
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_background"
+            android:padding="20dp"
+            android:textSize="25sp"
+            android:layout_marginBottom="100dp"
+            android:hint="Masukkan jawaban di sini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sequence"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

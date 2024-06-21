@@ -14,7 +14,7 @@ class QuizActivity : AppCompatActivity() {
 
     private lateinit var quizBinding: ActivityQuizBinding
 
-    private var currentStep = 2
+    private var currentStep = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

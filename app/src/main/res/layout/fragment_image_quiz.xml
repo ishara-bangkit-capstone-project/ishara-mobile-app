@@ -29,48 +29,21 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/ic_man_a"
-            app:layout_constraintBottom_toTopOf="@+id/rg_options"
+            app:layout_constraintBottom_toTopOf="@+id/btn_options"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_question" />
 
-
-        <RadioGroup
-            android:id="@+id/rg_options"
+        <app.bangkit.ishara.ui.custom_view.CustomTextButton
+            android:id="@+id/btn_options"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_quiz">
-
-            <RadioButton
-                android:id="@+id/radioButtonOption1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOption2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="B" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOption3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="C" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOption4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="E" />
-        </RadioGroup>
+            app:layout_constraintTop_toBottomOf="@id/iv_quiz"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
