@@ -14,7 +14,7 @@ class QuizActivity : AppCompatActivity() {
 
     private lateinit var quizBinding: ActivityQuizBinding
 
-    private var currentStep = 1
+    private var currentStep = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,7 @@ class QuizActivity : AppCompatActivity() {
             showQuizStep(currentStep)
         }
 
-        val options: ArrayList<ImgButton> = arrayListOf(
-            ImgButton(id = 1, name = "A1", isClicked = false),
-            ImgButton(id = 2, name = "A2", isClicked = false),
-            ImgButton(id = 3, name = "B1", isClicked = false),
-            ImgButton(id = 4, name = "A4", isClicked = false),
-        )
+
     }
 
     private fun showQuizStep(step: Int) {
@@ -60,3 +55,4 @@ class QuizActivity : AppCompatActivity() {
             .commit()
     }
 }
+
