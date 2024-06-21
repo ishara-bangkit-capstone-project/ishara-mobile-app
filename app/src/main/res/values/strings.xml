@@ -6,4 +6,7 @@
     <string name="title_rank">Rank</string>
     <string name="title_profile">Profile</string>
     <string name="image_classifier_failed">Image Classifier Failed</string>
+    <string name="cd_img_radio_button">image radio button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,5 +1,6 @@
 package app.bangkit.ishara.ui.main.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import app.bangkit.ishara.data.preferences.UserPreference
 import app.bangkit.ishara.data.preferences.dataStore
 import app.bangkit.ishara.databinding.FragmentHomeBinding
-import kotlinx.coroutines.coroutineScope
+import app.bangkit.ishara.ui.game.quiz.QuizActivity
 
 class HomeFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this)[HomeViewModel::class.java]
 
         pref = UserPreference.getInstance(requireActivity().application.dataStore)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -37,6 +38,11 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textHome
         homeViewModel.completedAlphabet.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+
+        binding.btnContinueLearning.setOnClickListener {
+            val intent = Intent(activity, QuizActivity::class.java)
+            startActivity(intent)
         }
 
         return root

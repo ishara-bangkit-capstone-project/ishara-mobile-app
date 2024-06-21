@@ -13,9 +13,10 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
+            android:background="@color/blue"
             android:minHeight="?attr/actionBarSize"
             app:title="Ishara"
+            app:menu="@menu/action_menu"
             app:titleTextAppearance="@style/CustomToolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -29,18 +30,18 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:elevation="10dp"
-        app:labelVisibilityMode="labeled"
-        app:itemTextColor="@color/orange"
-        app:itemIconTint="@color/orange"
-        app:itemTextAppearanceActive="@style/CustomBottomNavbar.Item"
-        app:itemTextAppearanceInactive="@style/CustomBottomNavbar.Item"
-        app:menu="@menu/bottom_nav_menu" />
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:background="@color/white"-->
+<!--        app:elevation="10dp"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        app:itemTextColor="@color/orange"-->
+<!--        app:itemIconTint="@color/orange"-->
+<!--        app:itemTextAppearanceActive="@style/CustomBottomNavbar.Item"-->
+<!--        app:itemTextAppearanceInactive="@style/CustomBottomNavbar.Item"-->
+<!--        app:menu="@menu/bottom_nav_menu" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

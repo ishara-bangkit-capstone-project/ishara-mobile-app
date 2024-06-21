@@ -38,7 +38,7 @@ class JourneyFragment : Fragment() {
         journeyAdapter = JourneyAdapter()
         journeyAdapter.setOnItemClickCallback(object : JourneyAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Item) {
-                // Handle item click
+              //TODO:implement onItemClicked
             }
         })
 
